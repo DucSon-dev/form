@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tập huấn Kỹ năng số - Đại học Hà Nội</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ba3b59;
+            --primary-dark: #992e49;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --background-color: #f4f5f7;
+            --text-color: #333333;
+            --light-text: #718096;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ba3b59 0%, #9c2c7f 100%);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            height: 80px;
+            margin: 0 auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .title-container {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            background: linear-gradient(to right, rgba(186, 59, 89, 0.05), rgba(156, 44, 127, 0.05));
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        
+        .courses-container {
+            padding: 0 2rem 2rem;
+        }
+        
+        .course-section {
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            transition: all var(--transition-speed) ease;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+        
+        .course-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+            border-left-width: 8px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .course-title i {
+            color: var(--primary-color);
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .course-description {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-left: 2.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .objective-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.75rem 2.25rem;
+            position: relative;
+        }
+        
+        .objective-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        .objective-list {
+            margin: 1rem 0 1.5rem 2.25rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        .objective-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .objective-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .subcourse-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            margin: 1.25rem 0;
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            position: relative;
+            background-color: rgba(186, 59, 89, 0.05);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .subcourse-link:hover {
+            background-color: rgba(186, 59, 89, 0.1);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .course-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: block;
+        }
+        
+        .course-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .register-btn {
+            display: inline-block;
+            margin: 1rem 0 0.5rem 2.25rem;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(186, 59, 89, 0.3);
+        }
+        
+        .register-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(186, 59, 89, 0.4);
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .contact-info i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem;
+                border-radius: 12px;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .courses-container {
+                padding: 0 1rem 1rem;
+            }
+            
+            .course-section {
+                padding: 1.25rem;
+                margin: 1.5rem 0;
+            }
+            
+            .register-btn {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .objective-title, 
+            .objective-list,
+            .course-description {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <img src="https://hmu.edu.vn/assets/img/Logoo.png" alt="Đại học Hà Nội" class="logo">
+        </div>
+        
+        <div class="title-container">
+            <h1 class="main-title">Đào tạo nâng cao kỹ năng công nghệ thông tin trong Chuyển đổi số năm 2026</h1>
+        </div>
+        
+        <div class="courses-container">
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-users-cog"></i>
+                    1. LƯỢNG GIÁ  QUÁ TRÌNH TRÊN HỆ THỐNG LMS (HƯỚNG DẪN GIẢNG DẠY VÀ ĐÁNH GIÁ TRÊN MODULE (LMS)
+                </h2>
+                <p class="course-description">Giảng viên, Trợ giảng, GV Thỉnh giảng </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Đánh giá quá trình : Bật/Tắt các hoạt động trong bài học theo thời gian thực. </div>
+                    <div class="objective-item">Đánh giá & Chấm điểm: Hướng dẫn chấm bài kiểm tra tRAT, tAPP, chấm bài tập nhóm SEM, xem kết quả iRAT. </div>
+                    <div class="objective-item">Tạo và chấm điểm, thực hiện đánh giá Mini-CEX trên thiết bị di động. </div>
+                    <div class="objective-item">Giám sát: Xem báo cáo hoạt động sinh viên, xuất bảng điểm thành phần. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/AN1atjxNyB" target="_blank" class="register-btn">Đăng ký tham gia</a>
+            </div>
+            
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-user-tie"></i>
+                   2.TỐI ƯU THỜI GIAN PHẢN HỒI  TRÊN HỆ THỐNG LMS-HƯỚNG DẪN SỬ DỤNG HỆ THỐNG EPORTFOLIO ĐỂ PHẦN HỒI VÀ ĐÁNH GIÁ SINH VIÊN 
+                </h2>
+                <p class="course-description">Giảng viên, Trợ giảng, GV Thỉnh giảng </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Truy cập hệ thống e-portfolio làm quen với giao diện mới của hệ thống. </div>
+                    <div class="objective-item">Chấm điểm và phản hồi các minh chứng học tập của sinh viên. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/JAR8qjz2Vg" target="_blank" class="register-btn">Đăng ký tham gia</a>
+            </div>
+            
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    3. QUẢN TRỊ KHO DỮ LIỆU VÀ CẤU HÌNH MODULE 
+                </h2>
+                <p class="course-description">Điều phối Module, Trưởng Bộ môn, Giáo vụ ĐH & SĐH. </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Quản lý Kho dữ liệu (Repository): Hướng dẫn tạo các hoạt động trong Kho dữ liệu; Kỹ năng nhập dữ liệu (Import) từ Kho sang Module đúng quy trình. </div>
+                    <div class="objective-item">Cấu hình hệ thống: Phân quyền giảng viên/trợ giảng; Thiết lập công thức tính điểm phức tạp trên LMS. </div>
+                    <div class="objective-item">Quản lý Tổ/Lớp: Chia nhóm thực hành, gán sinh viên vào các tổ. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/9fdfWMjASs" target="_blank" class="register-btn">Đăng ký tham gia</a>
+            </div>
+            
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-user-graduate"></i>
+                    4. TẬP HUẤN KHAI THÁC HỆ THỐNG PORTAL CHO GIÁO VỤ & GIẢNG VIÊN 
+                </h2>
+
+                <a href="https://forms.cloud.microsoft/r/bvNzTF5rwA" class="subcourse-link">
+                    <i class="fas fa-laptop-code mr-2"></i> 4.1 Quản lý điểm số và Kết quả học tập 
+                </a>
+                <p class="course-description">Giáo vụ Khoa/Viện; Giảng viên </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Quy trình nhập điểm thành phần, điểm thi kết thúc học phần trên Portal. </div>
+                    <div class="objective-item">Kỹ năng khóa bảng điểm, xử lý phúc khảo và công khai điểm trực tuyến. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/bvNzTF5rwA" target="_blank" class="register-btn">Đăng ký tham gia</a>
+
+                 <a href="https://forms.cloud.microsoft/r/kvCs9JsRhc" class="subcourse-link">
+                    <i class="fas fa-book-open mr-2"></i> 4.2 Quản lý Luận văn, Luận án & NCKH 
+                </a>
+                <p class="course-description">Giáo vụ SĐH; Thư ký Hội đồng; Giảng viên hướng dẫn </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Quy trình giao đề tài, duyệt đề cương Luận văn/Luận án trực tuyến. </div>
+                    <div class="objective-item">Theo dõi tiến độ thực hiện và nghiệm thu đề tài NCKH trên hệ thống Portal. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/kvCs9JsRhc" target="_blank" class="register-btn">Đăng ký tham gia</a>
+
+                <a href="https://forms.cloud.microsoft/r/TRk18sayCU" class="subcourse-link">
+                    <i class="fas fa-calendar-alt mr-2"></i> 4.3 Quản trị Lớp học & Lịch giảng 
+                </a>
+                <p class="course-description">Giáo vụ ĐH & SĐH </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Quản lý hồ sơ người học, trạng thái sinh viên (đang học, bảo lưu...). </div>
+                    <div class="objective-item">Xếp lịch giảng, quản lý thời khóa biểu và xử lý lịch bù/nghỉ. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/TRk18sayCU" target="_blank" class="register-btn">Đăng ký tham gia</a>
+            </div>
+
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-robot"></i>
+                    5. TẬP HUẤN CÔNG CỤ AI TRONG GIẢNG DẠY Y KHOA 
+                </h2>
+
+                <a href="https://forms.cloud.microsoft/r/47uAf5cv3b" class="subcourse-link">
+                    <i class="fas fa-brain mr-2"></i> 5.1 Soạn bài giảng & Tạo công cụ đánh giá 
+                </a>
+                <p class="course-description">Giảng viên; Nghiên cứu viên </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Soạn bài giảng: Sử dụng AI tóm tắt y văn, tạo slide bài giảng và video e-learning. </div>
+                    <div class="objective-item">Tạo công cụ đánh giá: Dùng AI tạo ngân hàng câu hỏi trắc nghiệm (MCQ) nhanh để đưa vào Kho dữ liệu; Xây dựng Case study lâm sàng ảo. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/47uAf5cv3b" target="_blank" class="register-btn">Đăng ký tham gia</a>
+
+              
+            </div>
+
+            <div class="course-section">
+                <h2 class="course-title">
+                    <i class="fas fa-desktop"></i>
+                    6. CÔNG CỤ AI VÀ KỸ NĂNG SỐ CHO KHỐI HÀNH CHÍNH 
+                </h2>
+                <p class="course-description">Cán bộ khối phòng ban, Hành chính Khoa/Viện </p>
+                <h3 class="objective-title">Mục tiêu khóa học</h3>
+                <div class="objective-list">
+                    <div class="objective-item">Ứng dụng AI trong soạn thảo văn bản, xử lý dữ liệu báo cáo hành chính; Kỹ năng an toàn thông tin và bảo mật dữ liệu. </div>
+                </div>
+                <a href="https://forms.cloud.microsoft/r/d6PHM249Xs" target="_blank" class="register-btn">Đăng ký tham gia</a>
+            </div>
+
+        </div>
+        
+        <div class="footer">
+            <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <span>Mọi thông tin liên hệ Chuyên viên Trần Thị Lan | Email: truyenthong@hmu.edu.vn | SĐT: 0813.303.123</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
